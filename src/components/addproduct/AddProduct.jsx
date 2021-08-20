@@ -7,12 +7,13 @@ function AddProduct() {
 	const [thumbnail, setThumbnail] = useState('');
 
 	const addProduct = (e) => {
-        e.preventDefault();
+		e.preventDefault();
 		socket.emit('addProduct', { title, price, thumbnail });
-		setTitle('')
-		setPrice('')
-		setThumbnail('')
+		setTitle('');
+		setPrice('');
+		setThumbnail('');
 	};
+
 	return (
 		<form id='form'>
 			<h2 className='text-center mb-4 text-light'>Ingrese producto</h2>
@@ -52,7 +53,7 @@ function AddProduct() {
 				/>
 				<label htmlFor='thumbnail'>URL de la imagen</label>
 			</div>
-			<button className='btn btn-success' onClick={addProduct} >
+			<button className='btn btn-success' onClick={addProduct}>
 				Ingresar producto
 			</button>
 		</form>

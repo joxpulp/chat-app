@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { socket } from '../../services/socket/socket';
 import dayjs from 'dayjs';
 
@@ -41,9 +42,7 @@ function ChatBox() {
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 					/>
-					<label htmlFor='email'>
-						Correo Electronico
-					</label>
+					<label htmlFor='email'>Correo Electronico</label>
 				</div>
 			</div>
 			<hr style={{ backgroundColor: 'white' }} />
@@ -53,17 +52,25 @@ function ChatBox() {
 					height: '400px',
 					borderRadius: '5px',
 					overflowY: 'scroll',
+                    overflowX: 'hidden'
 				}}
 				className='container bg-light p-3'
 			>
 				{messages.map((amessage, index) => (
-					<div className='container d-flex' key={index}>
+					<motion.div
+						initial={{ opacity: 0, x: '-100%' }}
+						animate={{ opacity: 1, x: 0 }}
+						className='container d-flex flex-column flex-lg-row'
+						key={index}
+					>
 						<p className='me-2 text-primary'>{amessage.email}</p>
 						<p className='me-2 text-danger'>
 							[{amessage.date} {amessage.time}]:
 						</p>
+
 						<p className='me-2 text-success'>{amessage.message}</p>
-					</div>
+						<hr style={{ backgroundColor: 'black' }} />
+					</motion.div>
 				))}
 			</div>
 			<div
