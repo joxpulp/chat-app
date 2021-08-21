@@ -15,7 +15,7 @@ function AddProduct() {
 	};
 
 	return (
-		<form id='form'>
+		<form id='form' onSubmit={addProduct}>
 			<h2 className='text-center mb-4 text-light'>Ingrese producto</h2>
 			<div className='form-floating mb-3'>
 				<input
@@ -26,6 +26,7 @@ function AddProduct() {
 					placeholder='title'
 					value={title}
 					onChange={(e) => setTitle(e.target.value)}
+					required
 				/>
 				<label htmlFor='title'>Titulo del producto</label>
 			</div>
@@ -38,6 +39,7 @@ function AddProduct() {
 					placeholder='price'
 					value={price}
 					onChange={(e) => setPrice(e.target.value)}
+					required
 				/>
 				<label htmlFor='price'>Precio</label>
 			</div>
@@ -50,10 +52,11 @@ function AddProduct() {
 					placeholder='thumbnail'
 					value={thumbnail}
 					onChange={(e) => setThumbnail(e.target.value)}
+					required
 				/>
 				<label htmlFor='thumbnail'>URL de la imagen</label>
 			</div>
-			<button className='btn btn-success' onClick={addProduct}>
+			<button className='btn btn-success' type='submit' >
 				Ingresar producto
 			</button>
 		</form>
